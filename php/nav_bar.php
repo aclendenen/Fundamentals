@@ -5,22 +5,26 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/application_style.css">
 		<script src="../scripts/jquery-2.2.1.min.js"></script>
 		<script src="../scripts/fundamentals.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 		
 	</head>
-	<div class = "nav_bar">
-		<?php if($user->is_loggedin()==""){ ?>
-		<form method="POST">
-			<button type= "submit" name="login_button" class= "nav_btn inline_rt med_btn green_btn">Login</button>
-			<input class= "med_field inline_rt nav_element" type= "password" name= "loginPassword" placeholder= "Password" required></input>
-			<input class= "med_field inline_rt nav_element" type= "text" name= "loginEmail" placeholder= "Email" required></input> 
-		</form>
-		<?php }else{ ?>
-		<form method="POST">
-			<button type= "submit" name="logout_button" class= "nav_btn inline_rt med_btn green_btn">Logout</button>
-		</form>
-		<div class= "inline_rt nav_text"> <?php echo $_SESSION['email']; ?> </div>
-		<?php } ?>
-	</div>
+	<body id= "app_body">
+		<div class = "nav_bar">
+			<?php if($user->is_loggedin()==""){ ?>
+			<form method="POST">
+				<button type= "submit" name="login_button" class= "nav_btn inline_rt med_btn green_btn">Login</button>
+				<input class= "med_field inline_rt nav_element" type= "password" name= "loginPassword" placeholder= "Password" required></input>
+				<input class= "med_field inline_rt nav_element" type= "text" name= "loginEmail" placeholder= "Email" required></input> 
+			</form>
+			<?php }else{ ?>
+			<form method="POST">
+				<button type= "submit" name="logout_button" class= "nav_btn inline_rt med_btn green_btn">Logout</button>
+			</form>
+			<div class= "inline_rt nav_text"> <?php echo $_SESSION['email']; ?> </div>
+			<?php } ?>
+		</div>
+	</body>
 </html>
 <?php
 
