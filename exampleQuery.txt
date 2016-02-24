@@ -1,0 +1,5 @@
+		$stmt = $user->runQuery("SELECT * FROM positions WHERE position_id=:id");
+		$stmt->execute(array(":id"=>1));
+		$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+		$m = $userRow['position_type'];
+		echo "<div>$m</div>";

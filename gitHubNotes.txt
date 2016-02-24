@@ -1,0 +1,37 @@
+//you can download the github app and that seems to be self explanatory otherwise here is some commandline
+//get to the directory you want to the files probably in htdoc in xampp 
+//once in the directory in the terminal
+
+git clone https://github.com/aclendenen/Fundamentals.git    //this will get you the files
+
+
+//if you don't know how branches work you can work on master just dont commit anything unless you know everything is working
+//when you are ready to commit heres what you do
+
+git pull 		//this gets the latest copy and will ask you to merge conflict if there is any
+git add --all 	//this adds all the new files you should always run this or git add .
+git commit -m "your commit message"  //this commits it but it wont show on git until you push
+git push origin master    //this will push to master
+
+
+//branching so that you can save and commit as you go
+//after cloning
+
+git branch theNameNewBranch 		//this will create a branch
+git checkout branchName				//this is how you checkout the branch / set it to active
+
+//you can now git add --all, git commit -m "", and git push origin branchName as much as you want
+//when you are ready to merge do the next steps you may need to commit before checking out master
+
+git checkout master
+git pull
+git merge urbranchname 			//if there is conflict it will ask you to resolve them
+git add . or git add —all
+git commit -m "  "
+git push origin master
+
+//other commands
+git branch 		//this list all of the local branches available
+git reset —hard master   //this resets any changes and should sync with master or whatever branch you specified
+
+		

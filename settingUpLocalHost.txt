@@ -1,0 +1,9 @@
+-you need to download xampp or something like it idk how to use other ones though
+	the address is https://www.apachefriends.org/index.html
+-once you have xampp you should place the fundamentals folder from git in the htdoc folder
+-then run xampp if its not and click on the middle tab and start the apache server
+-now go to http://localhost/phpmyadmin and if that doesn't work you may need to start the sqlserver also
+-once on http://localhost/phpmyadmin you should be able to run the sql scripts in order to create the fundamentals database
+	just copy the scripts in the script tab and hit go then refresh the left bar and the db should be there and viewable
+-now you can go to http://localhost/Fundamentals/php/index.php in you browser and you should see our app you can change
+	index.php to whatever file path you want and you should see that page unless it redirects you to index
