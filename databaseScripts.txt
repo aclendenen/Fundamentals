@@ -7,7 +7,7 @@ CREATE TABLE `fundamentals`.`users` (
    `position_id` VARCHAR( 255 ) NOT NULL ,
    `email` VARCHAR( 60 ) NOT NULL ,
    `password` VARCHAR( 255 ) NOT NULL ,
-    UNIQUE (`user_email`)
+    UNIQUE (`email`)
 ) ENGINE = MYISAM ;
 
 CREATE TABLE `fundamentals`.`positions` (
@@ -16,6 +16,8 @@ CREATE TABLE `fundamentals`.`positions` (
    `position_type` VARCHAR( 255 ) NOT NULL ,
     UNIQUE (`position_code`)
 ) ENGINE = MYISAM ;
+
+USE `fundamentals`
 
 INSERT INTO positions (position_code,position_type)
 VALUES ("manager123", "manager");
