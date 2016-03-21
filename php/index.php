@@ -71,9 +71,32 @@
 				}
 				else
 				{
+					
 					if($user->register($fname,$lname,$pos,$email,$pass))
-					{
-						$user->redirect_with_flash("index.php", "You have successfully registered! Please LogIn!");	
+					{	
+						$email_code = $user->get_email_code($email);
+						$to      = $email; // Send email to our user
+						$subject = 'Signup | Verification'; // Give the email a subject 
+						$message = '
+ 
+						Thanks for signing up!
+						Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+ 
+						Please click this link to activate your account:
+						http://localhost/Fundamentals/php/verify.php?email='.$email.'&email_code='.$email_code.'
+ 
+						'; // Our message above including the link
+					 
+						$headers = 'From:noreply@localhost.com' . "\r\n"; // Set from headers
+						if(mail($to, $subject, $message, $headers))
+						{
+							$user->redirect_with_flash("index.php", "You have successfully registered! Please verify your email!");	
+						}
+						else
+						{
+							$user->redirect_with_flash("index.php", "Something went wrong");	
+						} // Send our email
+						
 					}
 					else
 					{
@@ -83,7 +106,7 @@
 			}
 			catch(PDOException $e)
 			{
-				$user->redirect_with_flash("index.php", "Sorry something went wrong");
+				$user->redirect_with_flash("index.php", "Sorry something went wrong!");
 				//echo $e->getMessage();
 			}
 		}
