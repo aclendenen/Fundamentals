@@ -7,8 +7,5 @@
 	just copy the scripts in the script tab and hit go then refresh the left bar and the db should be there and viewable
 -now you can go to http://localhost/Fundamentals/php/index.php in you browser and you should see our app you can change
 	index.php to whatever file path you want and you should see that page unless it redirects you to index
-<<<<<<< Updated upstream
 -also a side note if you are on mac I've been using textwrangler as my text editor and I like it cause it colors the php and html and you 	can have multiple files open and navigate easy. I also have heard notepad2 on windows is good
-=======
 -to set up mail for mac with xampp http://www.5balloons.info/send-mails-through-phpxampp-on-osx-yosemite/
->>>>>>> Stashed changes
