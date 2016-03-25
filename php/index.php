@@ -16,6 +16,8 @@
 	{
 		$fname = strip_tags($_POST['signup_fn']);
 		$lname = strip_tags($_POST['signup_ln']);
+		$gender = strip_tags($_POST['gender']);
+		$dob = strip_tags($_POST['dob']);
 		$pos = strip_tags($_POST['signup_position']);
 		$pos_code = strip_tags($_POST['signup_position_id']);
 		$email = strip_tags($_POST['signup_email']);
@@ -33,6 +35,10 @@
 		else if($pos=="")	
 		{	
 			$user->redirect_with_flash("index.php", "Please select a posistion");
+		}
+		else if($dob=="")
+		{
+			$user->redirect_with_flash("index.php", "Please enter a correct Date");
 		}
 		else if($pos!="User" && !$user->pos_code_check($pos, $pos_code))	
 		{
@@ -72,7 +78,7 @@
 				else
 				{
 					
-					if($user->register($fname,$lname,$pos,$email,$pass))
+					if($user->register($fname,$lname,$pos,$email,$pass,$gender,$dob))
 					{	
 						$email_code = $user->get_email_code($email);
 						$to      = $email; // Send email to our user
@@ -94,7 +100,7 @@
 						}
 						else
 						{
-							$user->redirect_with_flash("index.php", "Something went wrong");	
+							$user->redirect_with_flash("index.php", "Something went wrong, email couldn't be sent");	
 						} // Send our email
 						
 					}
@@ -126,6 +132,12 @@
 			<div class= "container_body center_elements">
 				<input class= "container_field center_elements" type= "text" name= "signup_fn" placeholder= "First Name" required></input>
 				<input class= "container_field center_elements" type= "text" name= "signup_ln" placeholder= "Last Name" required></input>
+				<div>
+					<input id = "gender_radio" type = "radio" name = "gender" value = "male" checked> Male<br>
+					<input type = "radio" name = "gender" value = "female"> Female<br>
+				</div>
+				<div class= "container_field center_elements">Date of Birth</div>
+				<input class= "container_field center_elements" type= "date" name= "dob" required></input>
 				<select id= "positionDrop" class= "container_field center_elements" type= "text" name= "signup_position" required>
 					<option value="" disabled selected>Select a position</option>
 					<option id= "adminDrop" value="Administrator">Administrator</option>

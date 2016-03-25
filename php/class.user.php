@@ -20,24 +20,27 @@ class USER
 		return $stmt;
 	}
 	
-	public function register($fname,$lname,$pos,$email,$pass)
+	public function register($fname,$lname,$pos,$email,$pass,$gen,$dob)
 	{
 		$pos = strtolower($pos);
 		$email_code = md5( rand(0,1000) );
 		try
 		{
 			$new_password = password_hash($pass, PASSWORD_DEFAULT);
-			$stmt = $this->conn->prepare("INSERT INTO users(first_name,last_name,position,email,password,email_code) 
-		                                               VALUES(:fname,:lname,:pos,:email, :pass,:email_code)");
+			$stmt = $this->conn->prepare("INSERT INTO users(first_name,last_name,gender,dob,position,email,password,email_code) 
+		                                               VALUES(:fname,:lname,:gender,:dob,:pos,:email, :pass,:email_code)");
 			//$stmt = $this->conn->prepare("INSERT INTO users(first_name,last_name,position,email,password) 
 		     //                                          VALUES(:fname,:lname,:pos,:email, :pass)");
 												  
 			$stmt->bindparam(":fname", $fname);
 			$stmt->bindparam(":lname", $lname);
+			$stmt->bindparam(":gender", $gen);
+			$stmt->bindparam(":dob", $dob);
 			$stmt->bindparam(":pos", $pos);
 			$stmt->bindparam(":email", $email);
 			$stmt->bindparam(":pass", $new_password);
-			$stmt->bindparam(":email_code", $email_code);										  
+			$stmt->bindparam(":email_code", $email_code);	
+												  
 				
 			$stmt->execute();	
 			

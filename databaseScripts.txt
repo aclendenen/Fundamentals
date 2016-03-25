@@ -3,12 +3,14 @@ CREATE TABLE `fundamentals`.`users` (
    `user_id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
    `first_name` VARCHAR( 255 ) NOT NULL ,
    `last_name` VARCHAR( 255 ) NOT NULL ,
+   `gender` VARCHAR( 32 ) NOT NULL ,
+   `dob` date NOT NULL ,
    `position` VARCHAR( 255 ) NOT NULL ,
    `position_id` VARCHAR( 255 ) NOT NULL ,
    `email` VARCHAR( 60 ) NOT NULL ,
    `password` VARCHAR( 255 ) NOT NULL ,
    `email_code` VARCHAR( 32 ) NOT NULL ,
-   'email_verify' BOOLEAN DEFAULT 0,
+   `email_verify` BOOLEAN DEFAULT 0,
     UNIQUE (`email`)
 ) ENGINE = MYISAM ;
 
