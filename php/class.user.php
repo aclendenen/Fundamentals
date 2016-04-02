@@ -196,5 +196,59 @@ class USER
 			//echo $e->getMessage();
 		}
 	}
+	public function getItems($num_of_items, $offset)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM items ORDER BY name LIMIT $num_of_items OFFSET $offset");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				return $results;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	public function searchItemByName($name, $num_of_items, $offset)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM items WHERE name LIKE '%$name%' ORDER BY name LIMIT $num_of_items OFFSET $offset");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				return $results;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	public function addToCart($id,$quantity)
+	{
+	
+	}
+	public function removeFromCart($id,$quantity)
+	{
+	
+	}
 }
 ?>
