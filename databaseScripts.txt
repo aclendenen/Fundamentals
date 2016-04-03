@@ -21,6 +21,18 @@ CREATE TABLE `fundamentals`.`positions` (
     UNIQUE (`position_code`)
 ) ENGINE = MYISAM ;
 
+CREATE TABLE `fundamentals`.`items` (
+   `user_id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+   `name` VARCHAR( 255 ) NOT NULL ,
+   `category` VARCHAR( 255 ) NOT NULL ,
+   `supplier` VARCHAR( 255 ) NOT NULL ,
+   `color` VARCHAR( 255 ) ,
+   `dimensions` VARCHAR( 255 ) ,
+   `price` VARCHAR( 255 ) NOT NULL ,
+   `in_stock` INT( 11 ) NOT NULL ,
+   `description` VARCHAR( 1000 )
+) ENGINE = MYISAM ;
+
 CREATE TABLE `fundamentals`.`cart` (
    `cart_id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
    `user_id` INT( 11 ) NOT NULL ,
