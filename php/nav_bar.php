@@ -18,9 +18,11 @@
 				<input class= "med_field inline_rt nav_element" type= "text" name= "loginEmail" placeholder= "Email" required></input> 
 			</form>
 			<?php }else{ ?>
+			<a href= "home.php" class= "inline_lf nav_text nav_link">Home</a>
 			<form method="POST">
 				<button type= "submit" name="logout_button" class= "nav_btn inline_rt med_btn green_btn">Logout</button>
 			</form>
+			<a class= "inline_rt nav_text nav_link" href = "cart.php">Cart</a>
 			<div class= "inline_rt nav_text"> <?php echo $_SESSION['email']; ?> </div>
 			<?php } ?>
 		</div>

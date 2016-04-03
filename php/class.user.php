@@ -242,13 +242,264 @@ class USER
 			//echo $e->getMessage();
 		}
 	}
-	public function addToCart($id,$quantity)
+	public function nextItemsCheck($num_of_items, $offset)
 	{
-	
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM items ORDER BY name LIMIT $num_of_items OFFSET $offset");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				return true;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
 	}
-	public function removeFromCart($id,$quantity)
+	public function getItemById($id)
 	{
-	
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM items WHERE item_id=$id");
+			$stmt->execute();
+			$item=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() == 1)
+			{
+				return $item;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
 	}
+	public function editItemInStock($itemId,$in_stock)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("UPDATE items SET in_stock=$in_stock WHERE item_id=$itemId");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function isItemInCart($userId, $itemId)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM cart WHERE user_id=$userId AND item_id=$itemId");
+			$stmt->execute();
+			$item=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() == 1)
+			{
+				return $item;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	public function createCartItem($userId, $itemId, $quantity)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("INSERT INTO cart(user_id,item_id,quantity) VALUES($userId,$itemId,$quantity)");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function deleteCartItem($cartId)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("DELETE FROM cart WHERE cart_id=$cartId");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function editCartItem($cartId,$quantity)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("UPDATE cart SET quantity=$quantity WHERE cart_id=$cartId");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function getCart($userId)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM cart c JOIN items i ON c.item_id = i.item_id WHERE user_id=$userId ORDER BY name");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() > 0)
+			{
+				return $results;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	public function deleteCart($userId)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("DELETE FROM cart WHERE user_id=$userId");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function orderCart($userId)
+	{
+		$cart = $this->getCart($userId);
+		if($cart != false)
+		{
+			$orderId = $this->createOrder($userId);
+			$order = $this->getOrderById($orderId);
+			if($order != false)
+			{
+				for($i = 0; $i < count($cart); $i++)
+				{
+					if($cart[$i]["quantity"]<= $cart[$i]["in_stock"])
+					{
+						$success = $this->editItemInStock($cart[$i]["item_id"],$cart[$i]["in_stock"] - $cart[$i]["quantity"]);
+						if($success != false)
+						{
+							$check = $this->addOrderItem($order["order_id"], $cart[$i]["item_id"],$cart[$i]["quantity"]);
+							if($check == false)
+							{
+								return "add fail";
+								//$errorString = $errorString .$cart[$i]["name"];
+							}
+						}
+						else
+						{
+							return "edit fail";
+						}
+						
+					}
+					
+				}
+			}
+			else
+			{
+				return "order fail $order";
+			}
+		}
+		else
+		{
+			return "cart fail";
+		}
+		$this->deleteCart($userId);
+		return $order;
+		
+	}
+	public function createOrder($userId)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("INSERT INTO `order`(`user_id`) VALUES($userId)");
+			$stmt->execute();	
+			$orderId = $this->conn->lastInsertId();
+			return $orderId;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function getOrderById($orderId)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM `order` WHERE order_id=$orderId");
+			$stmt->execute();
+			$order=$stmt->fetch(PDO::FETCH_ASSOC);
+			if($stmt->rowCount() == 1)
+			{
+				return $order;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	public function addOrderItem($orderId, $itemId, $quantity)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("INSERT INTO order_item(order_id,item_id,quantity) VALUES($orderId,$itemId,$quantity)");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	
 }
 ?>

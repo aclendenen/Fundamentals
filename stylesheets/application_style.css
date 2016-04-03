@@ -32,8 +32,23 @@
 	position: relative;
 }
 
+.nav_link{
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.nav_link:hover{
+	color: white;
+	text-decoration: none;
+}
+
 .inline_rt{
 	float: right;
+	display: inline-block;
+}
+
+.inline_lf{
+	float: left;
 	display: inline-block;
 }
 
@@ -111,6 +126,13 @@
 	font-weight: 600;
 }
 
+#delete_btn{
+	border-radius: 6px;
+	border-color: black;
+	padding: 3px;
+	font-weight: 600;
+}
+
 #signup_container{
 	position: relative;
 	top: 30px;
@@ -126,6 +148,18 @@
 
 .green_btn:hover{
 	background-color: #3e8e41;
+}
+
+.red_btn{
+	background-color:#ff3232;
+}
+
+.red_btn_dis{
+	background-color:#e50000;
+}
+
+.red_btn:hover{
+	background-color:#e50000;
 }
 
 @media only screen and (max-width: 558px) {
@@ -184,11 +218,17 @@
 .table_styling{
 	background-color: white;
 	width: 76%;
+	overflow-x:auto;
+	margin-top: 15px;
 	//border-radius: 6px;
 }
 
 .table_header{
 	background-color:#4CAF50;
+}
+
+.table_heading{
+	padding-left: 4px;
 }
 
 #table_link{
@@ -209,4 +249,6 @@
 .table_row:hover{
 	background-color:#f5f5f5
 }
+
+
 

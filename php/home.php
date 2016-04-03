@@ -85,12 +85,13 @@
 						<td>No Items To Display</td>
   					</tr>
   				<?php }else{ $itemsCount = count($items);?>
-  					<?php for($i=0; $i < $itemsCount; $i++) { ?>
+  					<?php for($i=0; $i < $itemsCount; $i++) { 
+  						$link = "itemView.php?itemId=".$items[$i]['item_id'];?>
   						<tr class= "table_row">
-  							<td><a id= "table_link" href="#"><?php echo $items[$i]['name'];?></a></td>
-  							<td><a id= "table_link" href="#"><?php echo $items[$i]['category'];?></a></td>
-  							<td><a id= "table_link" href="#"><?php echo $items[$i]['supplier'];?></a></td>
-  							<td><a id= "table_link" href="#">$<?php echo $items[$i]['price'];?></a></td>
+  							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['name'];?></a></td>
+  							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['category'];?></a></td>
+  							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['supplier'];?></a></td>
+  							<td><a id= "table_link" href= <?php echo $link?>>$<?php echo $items[$i]['price'];?></a></td>
   						</tr>
   					<?php } ?>
   				<?php }?>
@@ -103,7 +104,7 @@
   			<input type="hidden" name="searchWord" value= "<?php echo $searchWord ?>" /> 
 			<div style= "margin-top: 10px;">
 				<button type= "submit" id="search_btn" name= "prev_button" class= <?php if($pageNum==0){ echo "'center_elements green_btn_dis'"; }else{ echo "'center_elements green_btn'"; }?> <?php if($pageNum==0){ echo 'disabled'; } ?> >Previous</button>
-				<button type= "submit" id="search_btn" name= "next_button" class= <?php if($itemsCount<$itemsPerPage){ echo "'center_elements green_btn_dis'"; }else{ echo "'center_elements green_btn'"; }?> <?php if($itemsCount<$itemsPerPage){ echo 'disabled'; } ?>>Next</button>
+				<button type= "submit" id="search_btn" name= "next_button" class= <?php $next = $user->nextItemsCheck($itemsPerPage, ($pageNum + 1) * $itemsPerPage); if(!$next){ echo "'center_elements green_btn_dis'"; }else{ echo "'center_elements green_btn'"; }?> <?php if(!$next){ echo 'disabled'; } ?>>Next</button>
 			</div>
 		</form>
 	</div>
