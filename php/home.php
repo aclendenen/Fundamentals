@@ -58,10 +58,12 @@
 </head>
 <body>
 	<div class="center_wrapper">
-		<div class="center_elements" style= "color:white">First Name: <?php echo $_SESSION['first_name']; ?></div>
-		<div class="center_elements" style= "color:white">Last Name: <?php echo $_SESSION['last_name']; ?></div>
-		<div class="center_elements" style= "color:white">Email: <?php echo $_SESSION['email']; ?></div>
-		<div class="center_elements" style= "color:white">Position: <?php echo $_SESSION['position']; ?></div>
+		<div class = "center_elements user_description_container">
+		<div class="center_elements description_text">First Name: <?php echo $_SESSION['first_name']; ?></div>
+		<div class="center_elements description_text">Last Name: <?php echo $_SESSION['last_name']; ?></div>
+		<div class="center_elements description_text">Email: <?php echo $_SESSION['email']; ?></div>
+		<div class="center_elements description_text">Position: <?php echo $_SESSION['position']; ?></div>
+		</div>
 	</div>
 	<div class= "center_wrapper">
 		<form name= "search_form" method="POST">
@@ -85,8 +87,21 @@
 						<td>No Items To Display</td>
   					</tr>
   				<?php }else{ $itemsCount = count($items);?>
-  					<?php for($i=0; $i < $itemsCount; $i++) { 
-  						$link = "itemView.php?itemId=".$items[$i]['item_id'];?>
+  					<?php for($i=0; $i < $itemsCount; $i++) {
+  						$link = "#";
+  						if($_SESSION['position'] == "user")
+  						{ 
+  							$link = "itemView.php?itemId=".$items[$i]['item_id'];
+  						}
+  						else if($_SESSION['position'] == "manager")
+  						{
+  							$link = "#";
+  						}
+  						else if($_SESSION['position'] == "admin")
+  						{
+  							$link = "#";
+  						}
+  						?>
   						<tr class= "table_row">
   							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['name'];?></a></td>
   							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['category'];?></a></td>

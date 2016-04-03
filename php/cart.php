@@ -78,7 +78,12 @@
  	 		</tbody>
   				<?php if($items == [] || $items == false){ $itemsCount = 0;?>
   					<tr class= "table_row">
-						<td>No Items In Your Cart</td>
+						<td id= "table_link">No Items In Your Cart</td>
+						<td id= "table_link"></td>
+						<td id= "table_link"></td>
+						<td id= "table_link"></td>
+						<td id= "table_link"></td>
+						<td id= "table_link"></td>
   					</tr>
   				<?php }else{ $itemsCount = count($items);?>
   					<?php 
@@ -106,14 +111,14 @@
 	</div>
 	<div class= "center_wrapper">
 		<?php if(!$order_confirm && $itemsCount != 0){ ?>
-			<div style = "color:white; margin-top: 10px">Total:  <?php echo money_format('$%i', $total);?></div>
+			<div class= "cart_total">Total:  <?php echo money_format('$%i', $total);?></div>
 			<form name= "checkout" method="POST">
 				<button style = "margin-top: 10px" type= "submit" id="search_btn" name= "purchaseItems" class="center_elements green_btn">Purchase Items</button>
 			</form>
 		<?php }else if($itemsCount != 0){ ?>
 			<form name= "checkout" method="POST">
 				<input type="hidden" name="total" value= <?php echo $total;?>" />
-				<div style = "color:white; margin-top: 10px">Total:  <?php echo money_format('$%i', $total);?></div>
+				<div class= "cart_total">Total:  <?php echo money_format('$%i', $total);?></div>
 				<input type= "number" min="1" step="any" name= "confirm_total" required></input>
 				<button style = "margin-top: 10px" type= "submit" id="search_btn" name= "confirmPurchase" class="center_elements green_btn">Confirm Order</button>
 			</form>		

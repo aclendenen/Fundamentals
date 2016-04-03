@@ -229,11 +229,15 @@
 
 .table_heading{
 	padding-left: 4px;
+	font-size: 16px;
+    font-weight: 600;
 }
 
 #table_link{
 	color: black;
 	margin-left: 4px;
+	font-size: 15px;
+	font-weight: 500;
 }
 
 #table_link:hover{
@@ -248,6 +252,58 @@
 
 .table_row:hover{
 	background-color:#f5f5f5
+}
+
+.description_container{
+    width: 45%;
+    background-color: white;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.description_text{
+    color: black;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.description_white{
+    color: white;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.qnty_input{
+	width: 55px;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+#cart_btn{
+	border-radius: 6px;
+	border-color: black;
+	padding: 4px;
+	font-weight: 600;
+}
+.cart_total{
+	color:white;
+	margin-top:10px;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.user_description_container{
+    width: 35%;
+    background-color: white;
+    margin-top: 15px;
+    border-radius: 5px;
 }
 
 

@@ -48,18 +48,21 @@
 </head>
 <body>
 	<div class="center_wrapper">
-		<div class="center_elements" style= "color:white">Name: <?php echo $item['name']; ?></div>
-		<div class="center_elements" style= "color:white">Category: <?php echo $item['category']; if($item['category']==""){ echo "--";} ?></div>
-		<div class="center_elements" style= "color:white">Supplier: <?php echo $item['supplier']; if($item['supplier']==""){ echo "--";} ?></div>
-		<div class="center_elements" style= "color:white">Color: <?php echo $item['color']; if($item['color']==""){ echo "--";} ?></div>
-		<div class="center_elements" style= "color:white">Dimensions: <?php echo $item['dimensions']; if($item['dimensions']==""){ echo "--";} ?></div>
-		<div class="center_elements" style= "color:white">Price: <?php echo $item['price']; ?></div>
-		<div class="center_elements" style= "color:white">In Stock: <?php echo $item['in_stock']; ?></div>
-		<form name= "add_to_cart" method="POST">
+		<div class = "center_elements description_container">
+			<div class="center_elements description_text">Name: <?php echo $item['name']; ?></div>
+			<div class="center_elements description_text">Category: <?php echo $item['category']; if($item['category']==""){ echo "--";} ?></div>
+			<div class="center_elements description_text">Supplier: <?php echo $item['supplier']; if($item['supplier']==""){ echo "--";} ?></div>
+			<div class="center_elements description_text">Color: <?php echo $item['color']; if($item['color']==""){ echo "--";} ?></div>
+			<div class="center_elements description_text">Dimensions: <?php echo $item['dimensions']; if($item['dimensions']==""){ echo "--";} ?></div>
+			<div class="center_elements description_text">Price: <?php echo $item['price']; ?></div>
+			<div class="center_elements description_text">In Stock: <?php echo $item['in_stock']; ?></div>
+			<div class="center_elements description_text">Description: <?php echo $item['description']; if($item['description']==""){ echo "--";}?></div>
+		</div>
+		<form name= "add_to_cart" method="POST" style= "margin-top:10px">
 			<input type="hidden" name="itemId" value= "<?php echo $item['item_id']; ?>" /> 
-			<div style= "color:white">Quantity:</div>
-			<input type= "number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name= "quantity" required></input>
-			<button type= "submit" id="search_btn" name= "addToCart" class="center_elements green_btn">Add to Cart</button>
+			<div class= "description_white" style= "color:white">Quantity:</div>
+			<input class= "qnty_input" type= "number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name= "quantity" required></input>
+			<button type= "submit" id="cart_btn" name= "addToCart" class="center_elements green_btn">Add to Cart</button>
 		</form>
 	</div>
 </body>
