@@ -43,13 +43,13 @@
 			$order = $user->orderCart($_SESSION['user_session']);
 			if($order == false)
 			{
-				//$user->redirect_with_flash("cart.php", "Something went wrong your order was not processed");
-				$user->redirect_with_flash("cart.php", $order);
+				$user->redirect_with_flash("cart.php", "Something went wrong your order was not processed");
+				//$user->redirect_with_flash("cart.php", $order);
 			}
 			else
 			{
-				$user->redirect_with_flash("cart.php", $order);
-				//$user->redirect_with_flash("cart.php", "Thank you for your order");
+				//$user->redirect_with_flash("cart.php", $order);
+				$user->redirect_with_flash("cart.php", "Thank you, your order has been processed. Order number ".$order[order_id]);
 			}
 		}
 		else

@@ -421,15 +421,6 @@ class USER
 						if($success != false)
 						{
 							$check = $this->addOrderItem($order["order_id"], $cart[$i]["item_id"],$cart[$i]["quantity"]);
-							if($check == false)
-							{
-								return "add fail";
-								//$errorString = $errorString .$cart[$i]["name"];
-							}
-						}
-						else
-						{
-							return "edit fail";
 						}
 						
 					}
@@ -438,12 +429,12 @@ class USER
 			}
 			else
 			{
-				return "order fail $order";
+				return false;
 			}
 		}
 		else
 		{
-			return "cart fail";
+			return false;
 		}
 		$this->deleteCart($userId);
 		return $order;
