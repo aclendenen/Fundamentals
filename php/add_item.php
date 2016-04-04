@@ -1,50 +1,36 @@
 //this is how to set up all of our pages
 
 <?php
-	require_once("default_includes.php");			//this file needs to be loaded first on any page that a user needs
-													//to be logged in for. It sets up the session, $user and the navbar
-													
-	//you can also include other php for dealing with GET and POST if needed
-	//-------------Example php for a get and post------------
-	if(isset($_POST["Name of submit button"]))  //you could use !empty($_POST["login_button"]) not sure what is better 
+	require_once("default_includes.php");
+	if(isset($_POST["addItem_button"]))
 	{
-	 //do something
+	 $user->redirect_with_flash("add_item.php", "Please enter a first name");
 	}
 ?>
 // note you do not need <html> tags or doc include because the nav bar takes car of that
 <head> // this header merges with the navbar header
 	
-	<title>Sample_Page</title>  //the title isn't really necessary but is good practice
-	
-	//the head is where you may want to include any other files that are specific to this page such as your own styling or js
-	//fundamentals.js and application_style.css are loaded for every page
-	
-	//-------------Example tags------------
-	<link rel="stylesheet" type="text/css" href="../stylesheets/YourFileName.css">
-	<script src="../scripts/YourFileName.js"></script>
-	// the ../ means go back to parent directory then look so this page should be in the php fold so 
-	//it will go back to the fundamentals folder then to where you direct it
+	<title>Add Item</title>	
 </head>
 <body> this will merge with the nav bar body but will be under it
 
-	//note you can put php tags anywhere and it will work for example
-	<?php if($thisVar == false){ ?>
-		<div>hello</div>  //and whatever html you may want
-				.
-				.
-				.
-	<?php } ?>  //dont forget to close and use ; or it may be hard to debug
 	
-	//-------------Example form------------
+	
 	<form method="POST">  //method can be a GET or POST and there can be an action if you want to post to a different page
 						  // example action        <form action= "nameOfFile.php" method="POST">
 			
 			//everything in-between the form is considered part of the form and its value will submit with the form
 			//Label the button as type= "submit" to activate the post and name it whatever you decided to look for at the top
 			
-			<button type= "submit" name="login_button" class= "nav_btn inline_rt med_btn green_btn">Login</button>
-			<input class= "med_field inline_rt nav_element" type= "password" name= "loginPassword" placeholder= "Password" required></input>
-			<input class= "med_field inline_rt nav_element" type= "text" name= "loginEmail" placeholder= "Email" required></input> 
+			<button type= "submit" name="addItem_button" class= "nav_btn inline_rt med_btn green_btn">Login</button>
+			<input class= "med_field inline_rt nav_element" type= "text" name= "itemName" placeholder= "Item Name" required></input>
+			<input class= "med_field inline_rt nav_element" type= "text" name= "itemCategory" placeholder= "Category" required></input> 
+			<input class= "med_field inline_rt nav_element" type= "text" name= "itemSupplier" placeholder= "Supplier" required></input> 
+			<input class= "med_field inline_rt nav_element" type= "text" name= "itemColor" placeholder= "Color"></input> 
+			<input class= "med_field inline_rt nav_element" type= "text" name= "itemDimensions" placeholder= "Dimensions"></input> 
+			<input class= "med_field inline_rt nav_element" type= "number" min="0" name= "itemPrice" placeholder= "Price" required></input> 
+			<input class= "med_field inline_rt nav_element" type= "number" min="0" step="1" name= "itemStock" placeholder= "Amount in Stock" required></input> 
+			<input class= "med_field inline_rt nav_element" type= "text" name="itemDescription" placeholder="Item Description" required></input> 
 	</form>
 	
 	//you also have access to $user and every public method in class.user.php by calling $user->name_of_method()
