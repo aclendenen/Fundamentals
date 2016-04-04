@@ -40,8 +40,10 @@
 		      <div class= "container_field center_elements">Amount in Stock</div>
 		      <input class= "med_field inline_rt nav_element" type= "number" min="0" step="1" name= "itemStock" placeholder= "Amount in Stock" required></input>
 		      
-		      <div class= "container_field center_elements">Item Description</div>
+		      <div class= "container_field center_elements">Item Description: 
 		      <input class= "med_field inline_rt nav_element" type= "text" name="itemDescription" placeholder="Item Description" required></input>
+		      </div>
+		      
 		   </div>
 		<div class= "container_footer center_elements">
 			<button type= "submit" id="addItem_button" name="addItem_button" class= "center_elements green_btn">Add Item</button>
