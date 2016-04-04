@@ -13,11 +13,10 @@
 <body>
 	<div id= "addItem_container" class= "center_wrapper">
 		<div class= "container_head center_elements">
-			<div class= "head_title center_elements">Register</div>
+			<div class= "head_title center_elements">Add Item</div>
 		</div>
 		<form name= "addItem_form" method="POST">
 		   <div class= "container_body center_elements">
-		      <button type= "submit" name="addItem_button" class= "nav_btn inline_rt med_btn green_btn">Login</button>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemName" placeholder= "Item Name" required></input>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemCategory" placeholder= "Category" required></input> 
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemSupplier" placeholder= "Supplier" required></input> 
