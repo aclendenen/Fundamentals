@@ -12,18 +12,35 @@
 </head>
 <body>
 	<div id= "addItem_container" class= "center_wrapper">
+		
 		<div class= "container_head center_elements">
 			<div class= "head_title center_elements">Add Item</div>
 		</div>
+		
 		<form name= "addItem_form" method="POST">
 		   <div class= "container_body center_elements">
+		      <div class= "container_field center_elements">Item Name</div>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemName" placeholder= "Item Name" required></input><br>
+		      
+		      <div class= "container_field center_elements">Category</div>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemCategory" placeholder= "Category" required></input><br> 
+		      
+		      <div class= "container_field center_elements">Supplier</div>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemSupplier" placeholder= "Supplier" required></input><br>
+		      
+		      <div class= "container_field center_elements">Color</div>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemColor" placeholder= "Color"></input><br>
+		      
+		      <div class= "container_field center_elements">Dimensions</div>
 		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemDimensions" placeholder= "Dimensions"></input><br>
+		      
+		      <div class= "container_field center_elements">Price</div>
 		      <input class= "med_field inline_rt nav_element" type= "number" min="0" name= "itemPrice" placeholder= "Price" required></input><br>
+		      
+		      <div class= "container_field center_elements">Amount in Stock</div>
 		      <input class= "med_field inline_rt nav_element" type= "number" min="0" step="1" name= "itemStock" placeholder= "Amount in Stock" required></input><br>
+		      
+		      <div class= "container_field center_elements">Item Description</div>
 		      <input class= "med_field inline_rt nav_element" type= "text" name="itemDescription" placeholder="Item Description" required></input><br>
 		   </div>
 		<div class= "container_footer center_elements">
