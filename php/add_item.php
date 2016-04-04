@@ -17,14 +17,14 @@
 		</div>
 		<form name= "addItem_form" method="POST">
 		   <div class= "container_body center_elements">
-		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemName" placeholder= "Item Name" required></input>
-		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemCategory" placeholder= "Category" required></input> 
-		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemSupplier" placeholder= "Supplier" required></input> 
-		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemColor" placeholder= "Color"></input> 
-		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemDimensions" placeholder= "Dimensions"></input> 
-		      <input class= "med_field inline_rt nav_element" type= "number" min="0" name= "itemPrice" placeholder= "Price" required></input> 
-		      <input class= "med_field inline_rt nav_element" type= "number" min="0" step="1" name= "itemStock" placeholder= "Amount in Stock" required></input> 
-		      <input class= "med_field inline_rt nav_element" type= "text" name="itemDescription" placeholder="Item Description" required></input> 
+		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemName" placeholder= "Item Name" required></input><br>
+		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemCategory" placeholder= "Category" required></input><br> 
+		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemSupplier" placeholder= "Supplier" required></input><br>
+		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemColor" placeholder= "Color"></input><br>
+		      <input class= "med_field inline_rt nav_element" type= "text" name= "itemDimensions" placeholder= "Dimensions"></input><br>
+		      <input class= "med_field inline_rt nav_element" type= "number" min="0" name= "itemPrice" placeholder= "Price" required></input><br>
+		      <input class= "med_field inline_rt nav_element" type= "number" min="0" step="1" name= "itemStock" placeholder= "Amount in Stock" required></input><br>
+		      <input class= "med_field inline_rt nav_element" type= "text" name="itemDescription" placeholder="Item Description" required></input><br>
 		   </div>
 		<div class= "container_footer center_elements">
 			<button type= "submit" id="addItem_button" name="addItem_button" class= "center_elements green_btn">Add Item</button>
