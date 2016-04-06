@@ -498,8 +498,19 @@ class USER
 	    
 	    //TODO: more inpute cleaning and privilege check(?)...because uh, i trust nothing
 	    
-		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,description) VALUES($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$itemDescription)");
+		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,description) VALUES(:itemName,:itemCategory,:itemSupplier,:itemColor,:itemDimensions,:itemPrice,:itemStock,:itemDescription)");
+	    	$stmt->bindparam(":itemName", $itemName);
+	    	$stmt->bindparam(":itemCategory", $itemCategory);
+	    	$stmt->bindparam(":itemSupplier", $itemSupplier);
+	    	$stmt->bindparam(":itemColor",$itemColor);
+	    	$stmt->bindparam(":itemDimensions", $itemDimensions);
+	    	$stmt->bindparam(":itemPrice", $itemPrice);
+	    	$stmt->bindparam(":itemStock", $itemStock);
+	    	$stmt->bindparam(":itemDescription", $itemDescription);
+	    	
 	    	$stmt->execute(); // hopefully
+	    	
+	    	return true;
 	    } catch(PDOException $noE) {
 	        return false;  // hmm, another error, false, i tells you, and that's all...
 	    }
