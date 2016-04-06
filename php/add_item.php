@@ -11,7 +11,23 @@
 	  $itemStock = strip_tags($_POST['itemStock']);
 	  $itemDescription = strip_tags($_POST['itemDescription']);  
 	  
-	  echo "Hello";
+	  //TODO: verify and "clean" data for table input
+	  try
+	  {
+	    if( $user->addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$itemDescription) )
+	    {
+	      echo "success :)";
+	    }
+	    else
+	    {
+	    	echo "Error"; //TODO: display erroR
+	    }
+	  }
+	  catch(PDOException $e)
+	  {
+	    $user->redirect_with_flash("index.php", "Sorry something went wrong!");
+	    //echo $e->getMessage();
+	  }
 	}
 ?>
 // note you do not need <html> tags or doc include because the nav bar takes car of that
