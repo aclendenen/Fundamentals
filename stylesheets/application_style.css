@@ -117,6 +117,7 @@
 	width: 70%;
 	border-color:black;
 	font-size: 16px;
+	display: inline-block;
 }
 
 #signup_btn, #search_btn{
