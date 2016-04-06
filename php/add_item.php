@@ -16,11 +16,11 @@
 	  {
 	    if( $user->addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$itemDescription) )
 	    {
-	      echo "success :)";
+	      $user->redirect_with_flash("add_item.php","Success!");
 	    }
 	    else
 	    {
-	    	echo "Error"; //TODO: display erroR
+	    	$user->redirect_with_flash("add_item.php", "failure!");
 	    }
 	  }
 	  catch(PDOException $e)
