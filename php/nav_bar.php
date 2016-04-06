@@ -23,7 +23,11 @@
 			<form method="POST">
 				<button type= "submit" name="logout_button" class= "nav_btn inline_rt med_btn green_btn">Logout</button>
 			</form>
-			<a class= "inline_rt nav_text nav_link" href = "cart.php">Cart</a>
+			<?php if($_SESSION['position'] == "user") { ?>
+				<a class= "inline_rt nav_text nav_link" href = "cart.php">Cart</a>
+			<?php }elseif($_SESSION['position'] == "admin"){ ?>
+				<a class= "inline_rt nav_text nav_link" href = "promotion.php">Admin</a>
+			<?php } ?>
 			<div class= "inline_rt nav_text"> <?php echo $_SESSION['email']; ?> </div>
 			<?php } ?>
 		</div>

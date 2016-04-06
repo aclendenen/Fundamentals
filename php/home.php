@@ -5,6 +5,10 @@
 	$pageNum = 0;
 	$itemsPerPage = 20;
 	
+	if(isset($_POST['add_item']))
+	{
+		$user->redirect("add_item.php");
+	}
 	if(isset($_POST['search_button']))
 	{
 		$searchWord = strip_tags($_POST['searchWord']);
@@ -61,10 +65,19 @@
 		<div class = "center_elements user_description_container">
 		<div class="center_elements description_text">First Name: <?php echo $_SESSION['first_name']; ?></div>
 		<div class="center_elements description_text">Last Name: <?php echo $_SESSION['last_name']; ?></div>
+		<div class="center_elements description_text">Gender: <?php echo $_SESSION['gender']; ?></div>
+		<div class="center_elements description_text">DOB: <?php echo $_SESSION['dob']; ?></div>
 		<div class="center_elements description_text">Email: <?php echo $_SESSION['email']; ?></div>
 		<div class="center_elements description_text">Position: <?php echo $_SESSION['position']; ?></div>
 		</div>
 	</div>
+	<?php if($_SESSION['position'] == "manager") { ?>
+		<div class="center_wrapper">
+			<form name= "add_item" method="POST" style= "margin-top:10px">
+				<button type= "submit" id="signup_btn" name= "add_item" class="center_elements green_btn">Add New Item</button>
+			</form>
+		</div>
+	<?php } ?>
 	<div class= "center_wrapper">
 		<form name= "search_form" method="POST">
 			<input class= "container_field center_elements" type= "text" name= "searchWord" placeholder= "Search for an Item"></input>
@@ -95,11 +108,11 @@
   						}
   						else if($_SESSION['position'] == "manager")
   						{
-  							$link = "#";
+  							$link = "itemView.php?itemId=".$items[$i]['item_id'];
   						}
   						else if($_SESSION['position'] == "admin")
   						{
-  							$link = "#";
+  							$link = "itemView.php?itemId=".$items[$i]['item_id'];
   						}
   						?>
   						<tr class= "table_row">

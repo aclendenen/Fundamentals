@@ -58,11 +58,15 @@
 			<div class="center_elements description_text">In Stock: <?php echo $item['in_stock']; ?></div>
 			<div class="center_elements description_text">Description: <?php echo $item['description']; if($item['description']==""){ echo "--";}?></div>
 		</div>
+		<?php if($_SESSION['position'] == "user") { ?>
 		<form name= "add_to_cart" method="POST" style= "margin-top:10px">
 			<input type="hidden" name="itemId" value= "<?php echo $item['item_id']; ?>" /> 
 			<div class= "description_white" style= "color:white">Quantity:</div>
 			<input class= "qnty_input" type= "number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name= "quantity" required></input>
 			<button type= "submit" id="cart_btn" name= "addToCart" class="center_elements green_btn">Add to Cart</button>
 		</form>
+		<?php }elseif($_SESSION['position'] == "manager") { ?>
+		<!-- ***************** place button to edit item if manager-->
+		<?php }?>
 	</div>
 </body>
