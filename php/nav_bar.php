@@ -14,6 +14,7 @@
 			<?php if($user->is_loggedin()==""){ ?>
 			<form method="POST">
 				<button type= "submit" name="login_button" class= "nav_btn inline_rt med_btn green_btn">Login</button>
+				<a class= "med_field inline_rt nav_element" href= "forgot_password.php">Forgot Password</a>
 				<input class= "med_field inline_rt nav_element" type= "password" name= "loginPassword" placeholder= "Password" required></input>
 				<input class= "med_field inline_rt nav_element" type= "text" name= "loginEmail" placeholder= "Email" required></input> 
 			</form>

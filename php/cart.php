@@ -117,7 +117,7 @@
 			</form>
 		<?php }else if($itemsCount != 0){ ?>
 			<form name= "checkout" method="POST">
-				<input type="hidden" name="total" value= <?php echo $total;?>" />
+				<input type="hidden" name="total" value= <?php echo $total;?>></input>
 				<div class= "cart_total">Total:  <?php echo money_format('$%i', $total);?></div>
 				<input type= "number" min="1" step="any" name= "confirm_total" required></input>
 				<button style = "margin-top: 10px" type= "submit" id="search_btn" name= "confirmPurchase" class="center_elements green_btn">Confirm Order</button>

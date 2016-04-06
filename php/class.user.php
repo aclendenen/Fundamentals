@@ -68,6 +68,8 @@ class USER
 					$_SESSION['user_session'] = $userRow['user_id'];
 					$_SESSION['first_name'] = $userRow['first_name'];
 					$_SESSION['last_name'] = $userRow['last_name'];
+					$_SESSION['gender'] = $userRow['gender'];
+					$_SESSION['dob'] = $userRow['dob'];
 					$_SESSION['position'] = $userRow['position'];
 					$_SESSION['email'] = $userRow['email'];
 					return true;
@@ -113,6 +115,8 @@ class USER
 		unset($_SESSION['user_session']);
 		unset($_SESSION['first_name']);
 		unset($_SESSION['last_name']);
+		unset($_SESSION['gender']);
+		unset($_SESSION['dob']);
 		unset($_SESSION['position']);
 		unset($_SESSION['email']);
 		return true;
@@ -194,6 +198,35 @@ class USER
 		{
 			return false;
 			//echo $e->getMessage();
+		}
+	}
+	public function new_email_code($email)
+	{
+		try
+		{
+			$new_code = md5( rand(0,1000) );
+			$stmt = $this->conn->prepare("UPDATE users SET email_code=:new_code WHERE email=:email");
+			$stmt->execute(array(':new_code' => $new_code,':email'=> $email));
+			//$stmt->execute();	
+			return true;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function update_password($email,$password)
+	{
+		try
+		{	
+			$reset_password = password_hash($password, PASSWORD_DEFAULT);
+			$stmt = $this->conn->prepare("UPDATE users SET password=:reset_password WHERE email=:email");
+			$stmt->execute(array(':reset_password' => $reset_password,':email'=> $email));
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
 		}
 	}
 	public function getItems($num_of_items, $offset)
