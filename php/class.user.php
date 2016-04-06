@@ -494,7 +494,16 @@ class USER
 	
 	public function addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$itemDescription)
 	{
-	    return true;
+	    try {
+	    
+	    //TODO: more inpute cleaning and privilege check(?)...because uh, i trust nothing
+	    
+		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,description) VALUES($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$itemDescription)");
+	    	$stmt->execute(); // hopefully
+	    } catch(PDOException $noE) {
+	        return false;  // hmm, another error, false, i tells you, and that's all...
+	    }
+	    
 	}
 	
 }
