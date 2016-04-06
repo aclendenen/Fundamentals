@@ -11,7 +11,7 @@
 	  $itemStock = strip_tags($_POST['itemStock']);
 	  $itemDescription = strip_tags($_POST['itemDescription']);  
 	  
-	  echo "Hello"
+	  echo "Hello";
 	}
 ?>
 // note you do not need <html> tags or doc include because the nav bar takes car of that
