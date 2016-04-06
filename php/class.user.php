@@ -492,5 +492,10 @@ class USER
 		}
 	}
 	
+	public function addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$itemDescription)
+	{
+	    return true;
+	}
+	
 }
 ?>
