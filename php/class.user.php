@@ -51,7 +51,29 @@ class USER
 			echo $e->getMessage();
 		}				
 	}
-	
+	public function saveChanges($fname,$lname,$pos,$gen,$dob,$address)
+	{
+		$pos = strtolower($pos);
+		try
+		{
+		$stmt = $this->conn->prepare("INSERT INTO users(first_name,last_name,gender,dob,position,address) 
+		                                               VALUES(:fname,:lname,:gender,:dob,:pos,:address)");
+		$stmt->bindparam(":fname", $fname);
+		$stmt->bindparam(":lname", $lname);
+		$stmt->bindparam(":gender", $gen);
+		$stmt->bindparam(":dob", $dob);
+		$stmt->bindparam(":pos", $pos);  
+		$stmt->bindparam(":address",$address);
+		
+		$stmt->execute();
+		
+		return $stmt;  
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}				                                          
+	}
 	
 	public function login_user($email,$pass)
 	{
