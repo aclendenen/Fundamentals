@@ -89,9 +89,10 @@
 			<thead class= "table_header">
   				<tr>
     				<th class= "table_heading" style= "width: 40%">Name</th>
-    				<th class= "table_heading" style= "width: 25%">Category</th>
-    				<th class= "table_heading" style= "width: 25%">Supplier</th> 
-    				<th class= "table_heading">Price</th>
+    				<th class= "table_heading" style= "width: 20%">Category</th>
+    				<th class= "table_heading" style= "width: 20%">Supplier</th> 
+    				<th class= "table_heading" style= "width: 10%">Price</th>
+    				<th class= "table_heading">In Stock</th>
  	 			</tr>
  	 		</thead>
  	 		</tbody>
@@ -120,6 +121,7 @@
   							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['category'];?></a></td>
   							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['supplier'];?></a></td>
   							<td><a id= "table_link" href= <?php echo $link?>>$<?php echo $items[$i]['price'];?></a></td>
+  							<td><a id= "table_link" href= <?php echo $link?>><?php echo $items[$i]['in_stock'];?></a></td>
   						</tr>
   					<?php } ?>
   				<?php }?>
