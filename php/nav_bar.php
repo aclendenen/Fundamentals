@@ -28,7 +28,7 @@
 			<?php }elseif($_SESSION['position'] == "administrator"){ ?>
 				<a class= "inline_rt nav_text nav_link" href = "promotion.php">Admin</a>
 			<?php } ?>
-			<div class= "inline_rt nav_text"> <?php echo $_SESSION['email']; ?> </div>
+			<div class= "inline_rt nav_text"><a href="edit_info.php"> <?php echo $_SESSION['email']; ?></a> </div>
 			<?php } ?>
 		</div>
 	</body>
