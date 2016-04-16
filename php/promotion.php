@@ -117,7 +117,9 @@
 										<button type= "submit" id="table_btn" class="red_btn" name= "deny_button">Deny</button>
 									</form>
   								</td>
-  							<?php } ?>
+  							<?php } else { ?>
+  								<td> </td>
+  							<?php }?>
   						</tr>
   					<?php } ?>
   				<?php }?>
