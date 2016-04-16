@@ -5,6 +5,24 @@
 	$pageNum = 0;
 	$peoplePerPage = 20;
 
+	if(isset($_POST['promote_button']))
+	{
+		$manager_id = strip_tags($_POST['manager_id']);
+		$user->managerPromote($manager_id);
+	
+	}
+	else if(isset($_POST['accept_button']))
+	{
+		$manager_id = strip_tags($_POST['manager_id']);
+		$user->managerAccepted($manager_id);
+	}
+	else if(isset($_POST['deny_button']))
+	{
+		$manager_id = strip_tags($_POST['manager_id']);
+		$user->managerDenied($manager_id);
+	}
+
+
 	if(isset($_POST['search_button']))
 	{
 		$searchWord = strip_tags($_POST['searchWord']);
@@ -67,9 +85,10 @@
 		<table class="center_elements table_styling">
 			<thead class= "table_header">
   				<tr>
-    				<th class= "table_heading" style= "width: 40%">Name</th>
-    				<th class= "table_heading" style= "width: 30%">Gender</th>
+    				<th class= "table_heading" style= "width: 35%">Name</th>
+    				<th class= "table_heading" style= "width: 20%">Gender</th>
     				<th class= "table_heading" style= "width: 30%">Position</th> 
+    				<th class= "table_heading" style= "width: 15%"></th> 
  	 			</tr>
  	 		</thead>
  	 		</tbody>
@@ -83,6 +102,22 @@
   							<td><a id= "table_link" href= "#"><?php echo $people[$i]['first_name'];?> <?php echo $people[$i]['last_name'];?></a></td>
   							<td><a id= "table_link" href= "#"><?php echo $people[$i]['gender'];?></a></td>
   							<td><a id= "table_link" href= "#"><?php echo $people[$i]['position'];?></a></td>
+  							<?php if($people[$i]['position'] == "manager" && $people[$i]['approved']){?>
+  								<td>
+									<form name= "promote" method="POST">
+										<input type="hidden" name="manager_id" value= "<?php echo $people[$i]['user_id']; ?>" /> 
+										<button type= "submit" id="table_btn" class="green_btn" name= "promote_button">Promote</button>
+									</form>
+  								</td>
+  							<?php } else if($people[$i]['position'] == "manager" && !$people[$i]['approved']){ ?>
+  								<td>
+									<form name= "managerApprove" method="POST">
+										<input type="hidden" name="manager_id" value= "<?php echo $people[$i]['user_id']; ?>" /> 
+										<button type= "submit" id="table_btn" class="green_btn" name= "accept_button">Accept</button>
+										<button type= "submit" id="table_btn" class="red_btn" name= "deny_button">Deny</button>
+									</form>
+  								</td>
+  							<?php } ?>
   						</tr>
   					<?php } ?>
   				<?php }?>

@@ -85,7 +85,7 @@ class USER
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)
 			{
-				if(password_verify($pass, $userRow['password']) && $userRow['email_verify'])
+				if(password_verify($pass, $userRow['password']) && $userRow['email_verify'] && $this->approveCheck($userRow['position'],$userRow['approved']))
 				{
 					$_SESSION['user_session'] = $userRow['user_id'];
 					$_SESSION['first_name'] = $userRow['first_name'];
@@ -572,5 +572,170 @@ class USER
 	    
 	}
 	
+	public function searchPersonByName($name, $num_of_people, $offset)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM users WHERE Last_name LIKE '%$name%' OR First_name LIKE '%$name%' ORDER BY Last_name LIMIT $num_of_people OFFSET $offset");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				return $results;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	
+	public function getPeople($num_of_people, $offset)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM users ORDER BY Last_name LIMIT $num_of_people OFFSET $offset");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				return $results;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	
+	public function nextPeopleCheck($num_of_people, $offset)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM users ORDER BY Last_name LIMIT $num_of_people OFFSET $offset");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				return true;
+
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}
+	}
+	
+	public function managerPromote($user_id)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("UPDATE users SET position='administrator' WHERE user_id=$user_id");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	
+	public function managerAccepted($user_id)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("UPDATE users SET approved=1 WHERE user_id=$user_id");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	
+	public function managerDenied($user_id)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("DELETE FROM users WHERE user_id=$user_id");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	public function approveCheck($position, $status)
+	{
+		if($position == "manager" && !$status)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	
+	}
+	public function emailAdmin($manager_name)
+	{
+	
+		try
+		{
+			$stmt = $this->conn->prepare("SELECT * from users WHERE position='administrator'");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($stmt->rowCount()> 0)
+			{
+				for($i = 0; $i < count($results); $i++)
+				{
+					 $to      = $results[$i]['email']; // Send email to our user
+					 $subject = 'New Manager Signup'; // Give the email a subject 
+					 $message = '
+					 
+					 '.$manager_name.' has signed up and is waiting for an administrators approval.
+
+					 '; // Our message above including the link
+		 
+					 $headers = 'From:noreply@localhost.com' . "\r\n"; // Set from headers
+					 mail($to, $subject, $message, $headers);
+				
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(PDOException $e)
+		{
+			return false;
+			//echo $e->getMessage();
+		}	
+	}
 }
 ?>

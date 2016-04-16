@@ -80,6 +80,10 @@
 					
 					if($user->register($fname,$lname,$pos,$email,$pass,$gender,$dob))
 					{	
+						if($pos == "Manager")
+						{
+							$user->emailAdmin($fname . " " . $lname);
+						}
 						$email_code = $user->get_email_code($email);
 						$to      = $email; // Send email to our user
 						$subject = 'Signup | Verification'; // Give the email a subject 
