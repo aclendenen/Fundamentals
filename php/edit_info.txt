@@ -1,0 +1,35 @@
+<head>
+	<title>Login_Signup</title>
+</head>
+<body>
+	<div id= "signup_container" class= "center_wrapper">
+		<div class= "container_head center_elements">
+			<div class= "head_title center_elements">Register</div>
+		</div>
+		<form name= "register_form" method="POST">
+			<div class= "container_body center_elements">
+				<input class= "container_field center_elements" type= "text" name= "signup_fn" placeholder= "First Name" required></input>
+				<input class= "container_field center_elements" type= "text" name= "signup_ln" placeholder= "Last Name" required></input>
+				<div>
+					<input id = "gender_radio" type = "radio" name = "gender" value = "male" checked> Male<br>
+					<input type = "radio" name = "gender" value = "female"> Female<br>
+				</div>
+				<div class= "container_field center_elements">Date of Birth</div>
+				<input class= "container_field center_elements" type= "date" name= "dob" required></input>
+				<select id= "positionDrop" class= "container_field center_elements" type= "text" name= "signup_position" required>
+					<option value="" disabled selected>Select a position</option>
+					<option id= "adminDrop" value="Administrator">Administrator</option>
+					<option id= "managerDrop" value="Manager">Manager</option>
+					<option id= "UserDrop" value="User">User</option>
+				</select>
+				<input id= "positionId" class= "container_field center_elements" type= "text" name= "signup_position_id" placeholder= "Id" required></input>
+				<input class= "container_field center_elements" type= "email" name= "signup_email" placeholder= "Email" required></input>
+				<input class= "container_field center_elements" type= "password" name= "signup_pw" placeholder= "Password" pattern=".{6,26}" required></input> 
+				<input class= "container_field center_elements" type= "password" name= "signup_pw_confirm" placeholder= "Confirm Password" pattern=".{6,26}" required></input>  
+			</div>
+			<div class= "container_footer center_elements">
+				<button type= "submit" id="signup_btn" name= "signup_button" class= "center_elements green_btn">Sign Me Up</button>
+			</div>
+		</form>
+	<div>
+</body>
