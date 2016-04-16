@@ -127,7 +127,7 @@
 	font-weight: 600;
 }
 
-#delete_btn{
+#delete_btn, #table_btn{
 	border-radius: 6px;
 	border-color: black;
 	padding: 3px;

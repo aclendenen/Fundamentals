@@ -25,7 +25,7 @@
 			</form>
 			<?php if($_SESSION['position'] == "user") { ?>
 				<a class= "inline_rt nav_text nav_link" href = "cart.php">Cart</a>
-			<?php }elseif($_SESSION['position'] == "admin"){ ?>
+			<?php }elseif($_SESSION['position'] == "administrator"){ ?>
 				<a class= "inline_rt nav_text nav_link" href = "promotion.php">Admin</a>
 			<?php } ?>
 			<div class= "inline_rt nav_text"> <?php echo $_SESSION['email']; ?> </div>
