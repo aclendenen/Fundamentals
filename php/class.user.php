@@ -573,6 +573,21 @@ class USER
 	    
 	}
 	
+	public function updateItem($itemId,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$lead_time,$itemDescription)
+	{
+		try
+		{
+			$stmt = $this->conn->prepare("UPDATE item SET name=$itemName, category=$itemCategory, supplier=$itemSupplier, color=$itemColor, dimensions=$itemDimensions, price=$itemPrice, in_stock=$itemStock, lead_time=$lead_time, description=$itemDescription WHERE item_id=$itemId");
+			$stmt->execute();	
+			
+			return $stmt;	
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
+	
 	public function searchPersonByName($name, $num_of_people, $offset)
 	{
 		try

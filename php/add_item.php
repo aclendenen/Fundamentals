@@ -2,7 +2,7 @@
 	require_once("default_includes.php");
 	if(isset($_POST["addItem_button"]))
 	{
-	  //TODO: handle stripping, and conversion better
+	  //TODO: handle stripping, and conversion better, sanitize
 	  
 	  $itemName = strip_tags($_POST['itemName']);
 	  $itemCategory = strip_tags($_POST['itemCategory']);
