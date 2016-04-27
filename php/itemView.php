@@ -1,5 +1,6 @@
 <?php
 	require_once("default_includes.php");
+	
 	if(isset($_POST['addToCart']))
 	{
 		$itemId = strip_tags($_POST['itemId']);
@@ -22,7 +23,7 @@
 				if($item["in_stock"] < $quant)
 				{
 					$quant = $item["in_stock"];
-				}
+				} 
 					$user->createCartItem($_SESSION['user_session'], $itemId, $quant);
 				
 			}	
@@ -67,6 +68,10 @@
 		</form>
 		<?php }elseif($_SESSION['position'] == "manager") { ?>
 		<!-- ***************** place button to edit item if manager-->
+		<form action="edit_item.php" method="post" style= "margin-top:10px">
+			<input type="hidden" name="itemId" value= "<?php echo $item['item_id']; ?>" /> 				
+			<button type= "submit" id="editItem_button" name="editItem_button" class="center_elements green_btn">Add to Cart</button>
+		</form>
 		<?php }?>
 	</div>
 </body>

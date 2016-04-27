@@ -53,16 +53,16 @@
 // note you do not need <html> tags or doc include because the nav bar takes car of that
 <head> // this header merges with the navbar header
 	
-	<title>Add Item</title>	
+	<title>Edit Item</title>	
 </head>
 <body>
-	<div id= "addItem_container" class= "center_wrapper">
+	<div id= "editItem_container" class= "center_wrapper">
 		
 		<div class= "container_head center_elements">
-			<div class= "head_title center_elements">Add Item</div>
+			<div class= "head_title center_elements">Edit Item</div>
 		</div>
 		
-		<form name= "addItem_form" method="POST">
+		<form name= "edittem_form" method="POST">
 		   <div class= "container_body center_elements">
 			Item Name: <input type= "text" name= "itemName" placeholder= "Item Name" required> <?php echo $itemName ?> </input> <br> 
 
