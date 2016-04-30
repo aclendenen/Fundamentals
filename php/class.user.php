@@ -547,13 +547,13 @@ class USER
 		}
 	}
 	
-	public function addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$lead_time,$itemDescription)
+	public function addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$leadTime,$itemDescription)
 	{
 	    try {
 	    
 	    //TODO: more inpute cleaning and privilege check(?)...because uh, i trust nothing
 	    
-		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,lead_time,description) VALUES(:itemName,:itemCategory,:itemSupplier,:itemColor,:itemDimensions,:itemPrice,:itemStock,:lead_time,:itemDescription)");
+		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,lead_time,description) VALUES(:itemName,:itemCategory,:itemSupplier,:itemColor,:itemDimensions,:itemPrice,:itemStock,:leadTime,:itemDescription)");
 	    	$stmt->bindparam(":itemName", $itemName);
 	    	$stmt->bindparam(":itemCategory", $itemCategory);
 	    	$stmt->bindparam(":itemSupplier", $itemSupplier);
@@ -561,7 +561,7 @@ class USER
 	    	$stmt->bindparam(":itemDimensions", $itemDimensions);
 	    	$stmt->bindparam(":itemPrice", $itemPrice);
 	    	$stmt->bindparam(":itemStock", $itemStock);
-	    	$stmt->bindparam(":lead_time", $lead);
+	    	$stmt->bindparam(":leadTime", $leadTime);
 	    	$stmt->bindparam(":itemDescription", $itemDescription);
 	    	
 	    	$stmt->execute(); // hopefully

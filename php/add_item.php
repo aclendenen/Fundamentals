@@ -12,12 +12,12 @@
 	  $itemPrice = strip_tags($_POST['itemPrice']);
 	  $itemStock = strip_tags($_POST['itemStock']);
 	  $itemDescription = strip_tags($_POST['itemDescription']);
-	  $lead_time = strip_tags($_POST['lead_time']);
+	  $leadTime = strip_tags($_POST['lead_time']);
 	  
 	  //TODO: verify and "clean" data for table input
 	  try
 	  {
-	    if( $user->addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$lead_time,$itemDescription) )
+	    if( $user->addItem($itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$leadTime,$itemDescription) )
 	    {
 	      $user->redirect_with_flash("home.php","Add Item Success!");
 	    }
@@ -57,14 +57,15 @@
 		      
 			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"></input> <br>
 			
-			<select id= "leadTimeDrop" class= "container_field center_elements" type= "text" name= "lead_time" required><div style= "display:inline-block" div>*</div>
+			<select id= "leadTimeDrop" class= "container_field center_elements" type= "text" name="lead_time" required><div style= "display:inline-block" div>*</div>
 					<option value="" disabled selected>Select a lead time</option>
-					<option id= "fastest" value="Administrator">1 to 3 days</option>
-					<option id= "faster" value="Manager">3 to 6 days</option>
-					<option id= "fast" value="User">6 to 10 days</option>
+					<option id= "fastest" value="1 to 3 days">1 to 3 days</option>
+					<option id= "faster" value="3 to 6 days">3 to 6 days</option>
+					<option id= "fast" value="6 to 10 days">6 to 10 days</option>
 				</select>
+				<br>
 		      
-			Price: <input type= "number" min="0" name= "itemPrice" placeholder= "0.0" required></input> <br>
+			Price: <input type= "number" min="0" step="0.01" name= "itemPrice" placeholder= "0.0" required></input> <br>
 		      
 			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" placeholder= "0" required></input> <br>
 		      
