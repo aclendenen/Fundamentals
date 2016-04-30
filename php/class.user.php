@@ -578,7 +578,8 @@ class USER
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("UPDATE items SET name=$itemName, category=$itemCategory, supplier=$itemSupplier, color=$itemColor, dimensions=$itemDimensions, price=$itemPrice, in_stock=$itemStock, lead_time=$leadTime, description=$itemDescription WHERE item_id=$itemId");
+			$stmt = $this->conn->prepare("UPDATE items SET name = '$itemName', category = '$itemCategory', supplier ='$itemSupplier', color= '$itemColor', dimensions = $itemDimensions, price = $itemPrice, in_stock = $itemStock, lead_time=$leadTime, description= $itemDescription WHERE item_id= $itemId")
+			    or die(mysql_error());
 			$stmt->execute();	
 			
 			return $stmt;	

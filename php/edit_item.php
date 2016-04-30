@@ -64,15 +64,15 @@
 		
 		<form name= "edittem_form" method="POST">
 		   <div class= "container_body center_elements">
-			Item Name: <input type= "text" name= "itemName" placeholder= "Item Name" required> <?php echo $itemName ?> </input> <br> 
+			Item Name: <input type= "text" name= "itemName" placeholder= "Item Name" required> <?php echo $itemName; ?> </input> <br> 
 
-			Category: <input type= "text" name= "itemCategory" placeholder= "Category" required><?php echo $itemCategory ?></input> <br>
+			Category: <input type= "text" name= "itemCategory" placeholder= "Category" required><?php echo $itemCategory; ?></input> <br>
 		      
-			Supplier: <input type= "text" name= "itemSupplier" placeholder= "Supplier" required><?php echo $itemSupplier ?></input> <br>
+			Supplier: <input type= "text" name= "itemSupplier" placeholder= "Supplier" required><?php echo $itemSupplier; ?></input> <br>
 		      
-			Color: <input type="text" name= "itemColor" placeholder= "Color"><?php echo $itemColor ?></input> <br>
+			Color: <input type="text" name= "itemColor" placeholder= "Color"><?php echo $itemColor; ?></input> <br>
 		      
-			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"><?php echo $itemDimensions ?></input> <br>
+			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"><?php echo $itemDimensions; ?></input> <br>
 			
 			<select id= "leadTimeDrop" class= "container_field center_elements" type= "text" name="lead_time" required><div style= "display:inline-block" div>*</div>
 					<option value="" disabled selected>Select a lead time</option>
@@ -82,11 +82,11 @@
 				</select>
 				<br>
 		      
-			Price: <input type= "number" min="0" step="any" name= "itemPrice" placeholder= "0.0" required><?php echo $itemPrice ?></input> <br>
+			Price: <input type= "number" min="0" step="any" name= "itemPrice" placeholder= "0.0" required><?php echo $itemPrice; ?></input> <br>
 		      
-			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" placeholder= "0" required><?php echo $itemStock ?></input> <br>
+			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" placeholder= "0" required><?php echo $itemStock; ?></input> <br>
 		      
-		        Item Description: <input type= "text"  name="itemDescription" placeholder="Item Description" required><?php echo $itemDescription ?></input> <br>
+		        Item Description: <input type= "text"  name="itemDescription" placeholder="Item Description" required><?php echo $itemDescription; ?></input> <br>
 		      </div>
 		      
 		   </div>
