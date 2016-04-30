@@ -57,17 +57,12 @@
 		      
 			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"></input> <br>
 			
-			Lead Time: <br>
-			<div>
-				<label for="input1">1 to 3 days</label>
-				<input id = "input1" type = "radio" name = "lead_time" value ="1 to 3 days" checked required><br>
-				
-				<label for="input2">3 to 6 days</label>
-				<input id = "input2" type="radio" name = "lead_time" value = "3 to 6 days"><br>
-				
-				<label for="input3">6 to 10 days</label>
-				<input id = "input3" type = "radio" name = "lead_time" value = "6 to 10 days">6 to 10 days</input><br>
-			</div>
+			<select id= "leadTimeDrop" class= "container_field center_elements" type= "text" name= "lead_time" required><div style= "display:inline-block" div>*</div>
+					<option value="" disabled selected>Select a lead time</option>
+					<option id= "fastest" value="Administrator">1 to 3 days</option>
+					<option id= "faster" value="Manager">3 to 6 days</option>
+					<option id= "fast" value="User">6 to 10 days</option>
+				</select>
 		      
 			Price: <input type= "number" min="0" name= "itemPrice" placeholder= "0.0" required></input> <br>
 		      
