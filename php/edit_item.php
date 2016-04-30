@@ -14,7 +14,7 @@
 	  $itemPrice = $itemInfo['price'];
 	  $itemStock = $itemInfo['in_stock'];
 	  $itemDescription = $itemInfo['description'];
-	  $lead_time = $itemInfo['lead_time'];
+	  $leadTime = $itemInfo['lead_time'];
 	
 	}
 	if(isset($_POST["updateItem_button"]))
@@ -29,12 +29,12 @@
 	  $itemPrice = strip_tags($_POST['itemPrice']);
 	  $itemStock = strip_tags($_POST['itemStock']);
 	  $itemDescription = strip_tags($_POST['itemDescription']);
-	  $lead_time = strip_tags($_POST['lead_time']);
+	  $leadTime = strip_tags($_POST['lead_time']);
 	  
 	  //TODO: verify and "clean" data for table input
 	  try
 	  {
-	    if( $user->updateItem($itemID,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$lead_time,$itemDescription) )
+	    if( $user->updateItem($itemID,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$leadTime,$itemDescription) )
 	    {
 	      $user->redirect_with_flash("home.php","update Success!");
 	    }
@@ -74,18 +74,15 @@
 		      
 			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"><?php echo $itemDimensions ?></input> <br>
 			
-			<div>
-				<label for="input1">1 to 3 days</label>
-				<input id = "input1" type = "radio" name = "lead_time" value ="1 to 3 days" checked required><br>
-				
-				<label for="input2">3 to 6 days</label>
-				<input id = "input2" type="radio" name = "lead_time" value = "3 to 6 days"><br>
-				
-				<label for="input3">6 to 10 days</label>
-				<input id = "input3" type = "radio" name = "lead_time" value = "6 to 10 days">6 to 10 days</input><br>
-			</div>
+			<select id= "leadTimeDrop" class= "container_field center_elements" type= "text" name="lead_time" required><div style= "display:inline-block" div>*</div>
+					<option value="" disabled selected>Select a lead time</option>
+					<option id= "fastest" value="1 to 3 days">1 to 3 days</option>
+					<option id= "faster" value="3 to 6 days">3 to 6 days</option>
+					<option id= "fast" value="6 to 10 days">6 to 10 days</option>
+				</select>
+				<br>
 		      
-			Price: <input type= "number" min="0" name= "itemPrice" placeholder= "0.0" required><?php echo $itemPrice ?></input> <br>
+			Price: <input type= "number" min="0" step="any" name= "itemPrice" placeholder= "0.0" required><?php echo $itemPrice ?></input> <br>
 		      
 			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" placeholder= "0" required><?php echo $itemStock ?></input> <br>
 		      

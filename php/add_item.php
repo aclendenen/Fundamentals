@@ -65,7 +65,7 @@
 				</select>
 				<br>
 		      
-			Price: <input type= "number" min="0" step="0.01" name= "itemPrice" placeholder= "0.0" required></input> <br>
+			Price: <input type= "number" min="0" step="any" name= "itemPrice" placeholder= "0.0" required></input> <br>
 		      
 			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" placeholder= "0" required></input> <br>
 		      
