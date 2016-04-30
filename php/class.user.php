@@ -553,7 +553,7 @@ class USER
 	    
 	    //TODO: more inpute cleaning and privilege check(?)...because uh, i trust nothing
 	    
-		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,description) VALUES(:itemName,:itemCategory,:itemSupplier,:itemColor,:itemDimensions,:itemPrice,:itemStock,:lead_time,:itemDescription)");
+		$stmt = $this->conn->prepare("INSERT INTO items(name,category,supplier,color,dimensions,price,in_stock,lead_time,description) VALUES(:itemName,:itemCategory,:itemSupplier,:itemColor,:itemDimensions,:itemPrice,:itemStock,:lead_time,:itemDescription)");
 	    	$stmt->bindparam(":itemName", $itemName);
 	    	$stmt->bindparam(":itemCategory", $itemCategory);
 	    	$stmt->bindparam(":itemSupplier", $itemSupplier);
@@ -568,6 +568,7 @@ class USER
 	    	
 	    	return true;
 	    } catch(PDOException $noE) {
+		
 	        return false;  // hmm, another error, false, i tells you, and that's all...
 	    }
 	    
@@ -577,7 +578,7 @@ class USER
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("UPDATE item SET name=$itemName, category=$itemCategory, supplier=$itemSupplier, color=$itemColor, dimensions=$itemDimensions, price=$itemPrice, in_stock=$itemStock, lead_time=$lead_time, description=$itemDescription WHERE item_id=$itemId");
+			$stmt = $this->conn->prepare("UPDATE items SET name=$itemName, category=$itemCategory, supplier=$itemSupplier, color=$itemColor, dimensions=$itemDimensions, price=$itemPrice, in_stock=$itemStock, lead_time=$lead_time, description=$itemDescription WHERE item_id=$itemId");
 			$stmt->execute();	
 			
 			return $stmt;	
