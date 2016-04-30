@@ -29,18 +29,18 @@
 	  $itemPrice = strip_tags($_POST['itemPrice']);
 	  $itemStock = strip_tags($_POST['itemStock']);
 	  $itemDescription = strip_tags($_POST['itemDescription']);
-	  $lead_time = strip_tages($_POST['lead_time']);
+	  $lead_time = strip_tags($_POST['lead_time']);
 	  
 	  //TODO: verify and "clean" data for table input
 	  try
 	  {
 	    if( $user->updateItem($itemID,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$lead_time,$itemDescription) )
 	    {
-	      $user->redirect_with_flash("add_item.php","update Success!");
+	      $user->redirect_with_flash("home.php","update Success!");
 	    }
 	    else
 	    {
-	    	$user->redirect_with_flash("add_item.php", "update failure!");
+	    	$user->redirect_with_flash("edit_item.php", "update failure!");
 	    }
 	  }
 	  catch(PDOException $e)
@@ -74,11 +74,15 @@
 		      
 			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"><?php echo $itemDimensions ?></input> <br>
 			
-			Lead Time: <br>
 			<div>
-				<input id = "lead_radio" type = "radio" name = "lead_time" value ="1 to 3 days" checked> 1 to 3 days<br>
-				<input type = "radio" name = "lead_time" value = "3 to 6 days">3 to 6 days<br>
-				<input type = "radio" name = "lead_time" value = "6 to 10 days">6 to 10 days<br>
+				<label for="input1">1 to 3 days</label>
+				<input id = "input1" type = "radio" name = "lead_time" value ="1 to 3 days" checked required><br>
+				
+				<label for="input2">3 to 6 days</label>
+				<input id = "input2" type="radio" name = "lead_time" value = "3 to 6 days"><br>
+				
+				<label for="input3">6 to 10 days</label>
+				<input id = "input3" type = "radio" name = "lead_time" value = "6 to 10 days">6 to 10 days</input><br>
 			</div>
 		      
 			Price: <input type= "number" min="0" name= "itemPrice" placeholder= "0.0" required><?php echo $itemPrice ?></input> <br>
