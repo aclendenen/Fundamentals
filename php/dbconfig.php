@@ -3,8 +3,8 @@ class Database
 {   
     private $host = "localhost";
     private $db_name = "fundamentals";
-    private $username = "root";
-    private $password = "";
+    private $username = "fundamentals";
+    private $password = "databasemonkey";
     public $conn;
      
     public function dbConnection()

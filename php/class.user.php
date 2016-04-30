@@ -736,7 +736,7 @@ class USER
 
 					 '; // Our message above including the link
 		 
-					 $headers = 'From:noreply@localhost.com' . "\r\n"; // Set from headers
+					 $headers = 'From: slogteam11@gmail.com' . "\r\n"; // Set from headers
 					 mail($to, $subject, $message, $headers);
 				
 				}

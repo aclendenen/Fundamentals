@@ -37,11 +37,11 @@
 							$message = '
 
 							You have selected to reset you password. Click on the link to create a new password.
-							http://localhost/Fundamentals/php/password_reset.php?email='.$email.'&email_code='.$email_code.'
+							http://slog.obadal.com/Fundamentals/php/password_reset.php?email='.$email.'&email_code='.$email_code.'
 
 							'; // Our message above including the link
 				 
-							$headers = 'From:noreply@localhost.com' . "\r\n"; // Set from headers
+							$headers = 'From: slogteam11@gmail.com' . "\r\n"; // Set from headers
 							if(mail($to, $subject, $message, $headers))
 							{
 								$user->redirect_with_flash("index.php", "You have been sent an email to reset you password");	

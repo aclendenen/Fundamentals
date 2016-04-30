@@ -93,11 +93,11 @@
 						Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
  
 						Please click this link to activate your account:
-						http://localhost/Fundamentals/php/verify.php?email='.$email.'&email_code='.$email_code.'
+						http://slog.obadal.com/Fundamentals/php/verify.php?email='.$email.'&email_code='.$email_code.'
  
 						'; // Our message above including the link
 					 
-						$headers = 'From:noreply@localhost.com' . "\r\n"; // Set from headers
+						$headers = 'From: slogteam11@gmail.com' . "\r\n"; // Set from headers
 						if(mail($to, $subject, $message, $headers))
 						{
 							$user->redirect_with_flash("index.php", "You have successfully registered! Please verify your email!");	
