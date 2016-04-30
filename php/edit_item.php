@@ -1,22 +1,20 @@
 <?php
 	require_once("default_includes.php");
 	
-	if(isset($_POST["editItem_button"]) )
-	{
-	  $itemID = strip_tags($_POST['itemID']);
-	  $itemInfo = $user->getItemById($itemID);
+	$itemID = strip_tags($_POST['itemID']);
+	$itemInfo = $user->getItemById($itemID);
 	  
-	  $itemName = $itemInfo['name'];
-	  $itemCategory = $itemInfo['category'];
-	  $itemSupplier = $itemInfo['supplier'];
-	  $itemColor = $itemInfo['color'];
-	  $itemDimensions = $itemInfo['dimensions'];
-	  $itemPrice = $itemInfo['price'];
-	  $itemStock = $itemInfo['in_stock'];
-	  $itemDescription = $itemInfo['description'];
-	  $leadTime = $itemInfo['lead_time'];
+	$itemName = $itemInfo['name'];
+	$itemCategory = $itemInfo['category'];
+	$itemSupplier = $itemInfo['supplier'];
+	$itemColor = $itemInfo['color'];
+	$itemDimensions = $itemInfo['dimensions'];
+	$itemPrice = $itemInfo['price'];
+	$itemStock = $itemInfo['in_stock'];
+	$itemDescription = $itemInfo['description'];
+	$leadTime = $itemInfo['lead_time'];
 	
-	}
+	
 	if(isset($_POST["updateItem_button"]))
 	{
 	  //TODO: handle stripping, and conversion better
@@ -59,7 +57,7 @@
 	<div id= "editItem_container" class= "center_wrapper">
 		
 		<div class= "container_head center_elements">
-			<div class= "head_title center_elements">Edit Item</div>
+			<div class= "head_title center_elements">Edit Item <?php echo $itemID; ?> </div>
 		</div>
 		
 		<form name= "edittem_form" method="POST">
