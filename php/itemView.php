@@ -70,7 +70,7 @@
 		<!-- ***************** place button to edit item if manager-->
 		<form action="edit_item.php" method="post" style= "margin-top:10px">
 			<input type="hidden" name="itemId" value= "<?php echo $item['item_id']; ?>" /> 				
-			<button type= "submit" id="editItem_button" name="editItem_button" class="center_elements green_btn">Add to Cart</button>
+			<button type= "submit" id="editItem_button" name="editItem_button" class="center_elements green_btn">Edit Item</button>
 		</form>
 		<?php }?>
 	</div>
