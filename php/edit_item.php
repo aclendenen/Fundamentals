@@ -24,7 +24,8 @@
 	  $itemDescription = $itemInfo['description'];
 	  $leadTime = $itemInfo['lead_time'];
 	}
-	else if(isset($_POST["updateItem_button"]))
+	
+	if(isset($_POST["updateItem_button"]))
 	{
 	  //TODO: handle stripping, and conversion better
 	  
@@ -97,7 +98,7 @@
 		      
 			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" value= "<?php echo $itemStock; ?>" required></input> <br>
 		      
-		        Item Description: <input type= "text"  name="itemDescription" placeholder="<?php echo $itemDescription; ?>" required></input> <br>
+		        Item Description: <input type= "text"  name="itemDescription" value="<?php echo $itemDescription; ?>" required></input> <br>
 		      </div>
 		      
 		   </div>
