@@ -1,7 +1,7 @@
 <?php
 	require_once("default_includes.php");
 	
-	$itemId = strip_tags($_GET['itemId']);
+	
 	
 	if(!empty($_GET['itemId']))
 	{
@@ -24,11 +24,7 @@
 	  $itemDescription = $itemInfo['description'];
 	  $leadTime = $itemInfo['lead_time'];
 	}
-	
-	
-	
-	
-	if(isset($_POST["updateItem_button"]))
+	else if(isset($_POST["updateItem_button"]))
 	{
 	  //TODO: handle stripping, and conversion better
 	  
@@ -45,7 +41,7 @@
 	  //TODO: verify and "clean" data for table input
 	  try
 	  {
-	    if( $user->updateItem($itemID,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$leadTime,$itemDescription) )
+	    if( $user->updateItem($itemId,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$leadTime,$itemDescription) )
 	    {
 	      $user->redirect_with_flash("home.php","update Success!");
 	    }
@@ -60,6 +56,10 @@
 	    //echo $e->getMessage();
 	  }
 	}
+	else {
+	  $user->redirect('home.php');
+	}
+	
 ?>
 // note you do not need <html> tags or doc include because the nav bar takes car of that
 <head> // this header merges with the navbar header
@@ -70,20 +70,20 @@
 	<div id= "editItem_container" class= "center_wrapper">
 		
 		<div class= "container_head center_elements">
-			<div class= "head_title center_elements">Edit Item <?php echo "Hello $itemId"; ?> </div>
+			<div class= "head_title center_elements">Edit Item <?php echo "$itemId"; ?> </div>
 		</div>
 		
 		<form name= "edittem_form" method="POST">
 		   <div class= "container_body center_elements">
-			Item Name: <input type= "text" name= "itemName" placeholder= "Item Name" required> <?php echo $itemName; ?> </input> <br> 
+			Item Name: <input type= "text" name= "itemName" value= "<?php echo $itemName; ?>" required>  </input> <br> 
 
-			Category: <input type= "text" name= "itemCategory" placeholder= "Category" required><?php echo $itemCategory; ?></input> <br>
+			Category: <input type= "text" name= "itemCategory" value= "<?php echo $itemCategory; ?>" required></input> <br>
 		      
-			Supplier: <input type= "text" name= "itemSupplier" placeholder= "Supplier" required><?php echo $itemSupplier; ?></input> <br>
+			Supplier: <input type= "text" name= "itemSupplier" value= "<?php echo $itemSupplier; ?>" required></input> <br>
 		      
-			Color: <input type="text" name= "itemColor" placeholder= "Color"><?php echo $itemColor; ?></input> <br>
+			Color: <input type="text" name= "itemColor" value= "<?php echo $itemColor; ?>"></input> <br>
 		      
-			Dimensions: <input type= "text" name= "itemDimensions" placeholder= "Dimensions"><?php echo $itemDimensions; ?></input> <br>
+			Dimensions: <input type= "text" name= "itemDimensions" value="<?php echo $itemDimensions; ?>"></input> <br>
 			
 			<select id= "leadTimeDrop" class= "container_field center_elements" type= "text" name="lead_time" required><div style= "display:inline-block" div>*</div>
 					<option value="" disabled selected>Select a lead time</option>
@@ -93,11 +93,11 @@
 				</select>
 				<br>
 		      
-			Price: <input type= "number" min="0" step="any" name= "itemPrice" placeholder= "0.0" required><?php echo $itemPrice; ?></input> <br>
+			Price: <input type= "number" min="0" step="any" name= "itemPrice" value= "<?php echo $itemPrice; ?>" required></input> <br>
 		      
-			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" placeholder= "0" required><?php echo $itemStock; ?></input> <br>
+			Amount in Stock: <input type= "number" min="0" step="1" name= "itemStock" value= "<?php echo $itemStock; ?>" required></input> <br>
 		      
-		        Item Description: <input type= "text"  name="itemDescription" placeholder="Item Description" required><?php echo $itemDescription; ?></input> <br>
+		        Item Description: <input type= "text"  name="itemDescription" placeholder="<?php echo $itemDescription; ?>" required></input> <br>
 		      </div>
 		      
 		   </div>
