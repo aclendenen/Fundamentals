@@ -44,16 +44,16 @@
 	  {
 	    if( $user->updateItem($itemId,$itemName,$itemCategory,$itemSupplier,$itemColor,$itemDimensions,$itemPrice,$itemStock,$leadTime,$itemDescription) )
 	    {
-	      $user->redirect_with_flash("edit_item.php?".$itemId,"update Success!");
+	      $user->redirect_with_flash("edit_item.php?itemId=".$itemId,"update Success!");
 	    }
 	    else
 	    {
-	    	$user->redirect_with_flash("edit_item.php?".$itemId, "update failure!");
+	    	$user->redirect_with_flash("edit_item.php?itemId=".$itemId, "update failure!");
 	    }
 	  }
 	  catch(PDOException $e)
 	  {
-	    $user->redirect_with_flash("edit_item.php?".$itemId, "Sorry something went wrong!");
+	    $user->redirect_with_flash("edit_item.php?itemId=".$itemId, "Sorry something went wrong!");
 	    //echo $e->getMessage();
 	  }
 	}	
