@@ -1,18 +1,29 @@
 <?php
 	require_once("default_includes.php");
 	
-	$itemID = strip_tags($_POST['itemID']);
-	$itemInfo = $user->getItemById($itemID);
-	  
-	$itemName = $itemInfo['name'];
-	$itemCategory = $itemInfo['category'];
-	$itemSupplier = $itemInfo['supplier'];
-	$itemColor = $itemInfo['color'];
-	$itemDimensions = $itemInfo['dimensions'];
-	$itemPrice = $itemInfo['price'];
-	$itemStock = $itemInfo['in_stock'];
-	$itemDescription = $itemInfo['description'];
-	$leadTime = $itemInfo['lead_time'];
+	if(!empty($_GET['itemId']))
+	{
+	  $itemId = strip_tags($_GET['itemId']);
+	  $item = $user->getItemById($itemId);
+	  if($item == false)
+	  {
+	    $user->redirect('home.php');
+	  }
+	
+	  $itemInfo = $user->getItemById($itemID);
+	
+	  $itemName = $itemInfo['name'];
+	  $itemCategory = $itemInfo['category'];
+	  $itemSupplier = $itemInfo['supplier'];
+	  $itemColor = $itemInfo['color'];
+	  $itemDimensions = $itemInfo['dimensions'];
+	  $itemPrice = $itemInfo['price'];
+	  $itemStock = $itemInfo['in_stock'];
+	  $itemDescription = $itemInfo['description'];
+	  $leadTime = $itemInfo['lead_time'];
+	}
+	
+	
 	
 	
 	if(isset($_POST["updateItem_button"]))
