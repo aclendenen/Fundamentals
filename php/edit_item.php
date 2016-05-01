@@ -1,5 +1,6 @@
 <?php
 	require_once("default_includes.php");
+	$itemId = strip_tags($_GET['itemId']);
 	
 	if(!empty($_GET['itemId']))
 	{
