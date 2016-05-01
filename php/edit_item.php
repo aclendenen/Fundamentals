@@ -24,6 +24,9 @@
 	  $itemDescription = $itemInfo['description'];
 	  $leadTime = $itemInfo['lead_time'];
 	}
+	else {
+	  $user->redirect('home.php');		
+	}
 	
 	if(isset($_POST["updateItem_button"]))
 	{
@@ -56,10 +59,7 @@
 	    $user->redirect_with_flash("index.php", "Sorry something went wrong!");
 	    //echo $e->getMessage();
 	  }
-	}
-	else {
-	  $user->redirect('home.php');
-	}
+	}	
 	
 ?>
 // note you do not need <html> tags or doc include because the nav bar takes car of that
