@@ -1,5 +1,6 @@
 <?php
 	require_once("default_includes.php");
+	
 	$itemId = strip_tags($_GET['itemId']);
 	
 	if(!empty($_GET['itemId']))
@@ -69,7 +70,7 @@
 	<div id= "editItem_container" class= "center_wrapper">
 		
 		<div class= "container_head center_elements">
-			<div class= "head_title center_elements">Edit Item <?php echo $itemID; ?> </div>
+			<div class= "head_title center_elements">Edit Item <?php echo "Hello $itemID"; ?> </div>
 		</div>
 		
 		<form name= "edittem_form" method="POST">
