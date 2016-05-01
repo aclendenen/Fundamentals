@@ -12,7 +12,7 @@
 	    $user->redirect('home.php');
 	  }
 	
-	  $itemInfo = $user->getItemById($itemID);
+	  $itemInfo = $user->getItemById($itemId);
 	
 	  $itemName = $itemInfo['name'];
 	  $itemCategory = $itemInfo['category'];
@@ -70,7 +70,7 @@
 	<div id= "editItem_container" class= "center_wrapper">
 		
 		<div class= "container_head center_elements">
-			<div class= "head_title center_elements">Edit Item <?php echo "Hello $itemID"; ?> </div>
+			<div class= "head_title center_elements">Edit Item <?php echo "Hello $itemId"; ?> </div>
 		</div>
 		
 		<form name= "edittem_form" method="POST">
