@@ -24,9 +24,6 @@
 	  $itemDescription = $itemInfo['description'];
 	  $leadTime = $itemInfo['lead_time'];
 	}
-	else {
-	  $user->redirect('home.php');		
-	}
 	
 	if(isset($_POST["updateItem_button"]))
 	{
