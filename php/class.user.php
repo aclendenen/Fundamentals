@@ -589,7 +589,24 @@ class USER
 			return false;
 		}
 	}
-	
+	public function makeReturn($itemName)
+	{	
+		try
+		{
+			$itemid = $this->searchItemByName($itemName,1,0);
+			$stmt = $this->conn->prepare("UPDATE items SET defects = defects+1 WHERE item_id=$itemId");
+			$stmt = $this->conn->prepare("UPDATE items SET in_stock=in_stock-1 WHERE item_id=$itemId");
+			$stmt->execute();
+			$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+			
+			
+			return $stmt;
+		}
+		catch(PDOException $e)
+		{
+			return false;
+		}
+	}
 	public function searchPersonByName($name, $num_of_people, $offset)
 	{
 		try

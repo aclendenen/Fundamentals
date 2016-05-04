@@ -14,6 +14,7 @@
 	  $itemDescription = strip_tags($_POST['itemDescription']);
 	  $leadTime = strip_tags($_POST['lead_time']);
 	  
+	  
 	  //TODO: verify and "clean" data for table input
 	  try
 	  {
